@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adventure initialSceneId="ZombieEncounter">
+  <scene id="ZombieEncounter">
+    <description>
+A zombie coils it's stinking fingers around your ankle. What do you do?
+
+1: Diplomacy: 'Plase, let me go!'
+2: Retaliation: Hit it with a brick
+q: Quit the game
+    </description>
+    <choices>
+      <choice key="1" leadsTo="KilledByZombie" />
+      <choice key="2" leadsTo="ReleasedByZombie" />
+    </choices>
+  </scene>
+  <scene id="KilledByZombie">
+    <description>
+The zombie is in no mood to negotiate. Before you notice, its other hand
+wraps around your second leg. Then it starts dragging you down. And you
+start to scream.
+
+GAME OVER
+
+1: Start again
+q: Quit the game
+    </description>
+    <choices>
+      <choice key="1" leadsTo="ZombieEncounter" />
+    </choices>
+  </scene>
+  <scene id="ReleasedByZombie">
+    <description>
+You smack it right in the face and it releases the grip for just enough time
+for you to slip away. Startled you start running towards the train station.
+
+YOU HAVE WON THE GAME!
+
+1: Start again
+q: Quit the game
+    </description>
+    <choices>
+      <choice key="1" leadsTo="ZombieEncounter" />
+    </choices>
+  </scene>
+</adventure>
