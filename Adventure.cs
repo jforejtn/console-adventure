@@ -12,15 +12,14 @@ namespace ConsoleAdventure
 		public Scene? CurrentScene = null;
 		public Dictionary<string, Scene> Scenes = new();
 
-		private List<string> quitWords = new List<string> { "q", "quit", "exit" };
-
 		public void HandleInput()
 		{
 			while (true)
 			{
-				string input = Console.ReadLine();
+				char input = Console.ReadKey(intercept: true).KeyChar;
 				if (CurrentScene.Choices.ContainsKey(input))
 				{
+					Console.Clear();
 					string nextSceneId = CurrentScene.Choices[input];
 					if (Scenes.ContainsKey(nextSceneId))
 					{
@@ -28,7 +27,7 @@ namespace ConsoleAdventure
 						break;
 					}
 				}
-				else if (quitWords.Contains(input.ToLower()))
+				else if (input == 'q')
 				{
 					CurrentScene = null;
 					break;
@@ -36,8 +35,7 @@ namespace ConsoleAdventure
 				else
 				{
 					Console.WriteLine($"Your input '{input}' did not match any of the choices.\n");
-					var quitWordsChoice = string.Join(" / ", quitWords.Select(word => $"'{word}'"));
-					Console.WriteLine($"If you're trying to quit the game, enter {quitWordsChoice}");
+					Console.WriteLine($"If you're trying to quit the game, type 'q'.");
 				}
 			}
 		}

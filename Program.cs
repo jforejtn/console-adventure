@@ -26,10 +26,10 @@ namespace ConsoleAdventure
 					string description = descriptionElement.InnerText;
 
 					XmlNodeList choiceElements = sceneElement.SelectNodes("descendant::choice");
-					var sceneChoices = new Dictionary<string, string>();
+					var sceneChoices = new Dictionary<char, string>();
 					foreach (XmlNode choiceElement in choiceElements)
 					{
-						string key = choiceElement.Attributes.GetNamedItem("key").Value;
+						char key = choiceElement.Attributes.GetNamedItem("key").Value[0];
 						string leadsTo = choiceElement.Attributes.GetNamedItem("leadsTo").Value;
 						sceneChoices.Add(key, leadsTo);
 					}
